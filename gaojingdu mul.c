@@ -28,8 +28,6 @@ int main(){
 		carry[i] = carry[i]%10;
 	}
 	while (carry[len] == 0) len--;
-	for (i=len; i>=1; i--)
-	printf("%d", carry[i]);
-    printf("\n");
+	
 }
 }
