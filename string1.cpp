@@ -2,8 +2,8 @@
 #include<string.h>
 int main()
 {
-	char stringArray[10][100];
-	char targetString[100], c;
+	char stringArray[10][150];
+	char targetString[150], c;
 	int n, i, len, temp, lenst, sum, lentg, j, k;
 	scanf("%d%c", &n, &c);
 	for (i=0; i<=n-1; i++)
@@ -19,7 +19,7 @@ int main()
 	    lenst = strlen(stringArray[i]);
 	    lentg = strlen(targetString);
 		for(j=0; j<=lenst-1; j++)
-		if (stringArray[i][j] == targetString[1])
+		if (stringArray[i][j] == targetString[0])
 		{
 			temp = 0;
 			for (k=0; k<=lentg-1; k++)
