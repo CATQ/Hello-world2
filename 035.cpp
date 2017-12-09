@@ -1,8 +1,8 @@
 #include<stdio.h>
+
 int n, sum;
 int a[23];
-int abss(int k)
-{
+int abss(int k){
 	if (k<0) return (-k);
 	else return(k);
 }
@@ -14,6 +14,7 @@ int judge(int k){
 	if (i == n) return 1;
 	else return 0;
 }
+
 int p(int k)
 {
 	int i, j, s;
@@ -27,46 +28,21 @@ int p(int k)
 	    while (a[k] !=0) k++;
 	    if (k<=n){
 	    	if (k == 1){
-	    		for (j=1; j<=n; j++)
-	    		{
-	    			a[k] = j;
-	    			p(k+1);
+	    	    for (j=1; j<=n; j++){
+	    		a[k] = j;
+	    		p(k);
 			    }
 			    a[k] = 0;
-			} 
-			else{
-				s = a[k]-1;
-				if (s >= 2){
-					for (j=s-1; j<=s+1; j++){
-						a[k] = j;
-						p(k+1);
-					}
-					a[k]= 0;
-				}
-				else
-				for (j=1; j<=2; j++){
-					a[k] = j;
-					p(k+1);
-				}
-			}
-/*	    	s = a[k-1];
-			
-			if (s >= 2){
-	    	    for (j=s-1; j<=s+1; j++){
-	    		    a[k] = j;
-	    		    p(k+1);
-			    }
-                a[k] = 0;
             }
-            
-            else {
-            	for (j=1; j<=2; j++)
-            	{
+            else{
+            	if (a[k-1] >= 2) s = a[k-1];
+            	else s = 2;
+            	for (j=s-1; j<=s+1; j++){
             		a[k] = j;
-            		p(k+1);
+            		p(k);
 				}
 				a[k] = 0;
-			}*/ 
+			}
 		}
     }
 }
@@ -81,12 +57,10 @@ int main(){
 		scanf("%d", &k);
 		a[i] = k;
 	} 
-	a[0] = 2;
 	sum = 0; temp = 0;
 	for (i=1; i<=n; i++) if (a[i] == 0) 
 	{
-	     p(1); temp = 1;
-		 break; 
+		p(1); temp = 1; break;
 	} 
 	if (temp == 0) sum = sum + judge(0);
 	printf("%d\n", sum);
@@ -94,3 +68,4 @@ int main(){
 	scanf("%d", &n);
     }
 }
+
