@@ -1,27 +1,17 @@
 #include<stdio.h>
-int main()
-{
-	int t, n, i, j;
-	int lm, um, dm, rm;
-	int x, y; 
-	long s;
-	scanf("%d", &t);
-	for (i=1; i<=t; i++)
-	{
-		lm=10000;rm=-10000;um=-10000;dm=10000;
-		
-		scanf("%d", &n);
-		for (j=1; j<=n; j++)
-		{
-		scanf("%d%d", &x, &y);
-		if (x>rm) rm=x;
-		if (x<lm) lm=x;
-		if (y>um) um=y;
-		if (y<dm) dm=y;
-		
-		}
-		s=(rm-lm)*(um-dm);
-		printf("%ld\n", s); 
-	}
+int p(long long a, long long b){
+	long long c;
+	float d;
+	d = 1.0*a/b +0.5;
+	c = d;
+	return c;
 }
- 
+int main(){
+	int t, i, j, k;
+	long long a, b;
+	scanf("%d", &t);
+	for (i=1; i<=t; i++){
+		scanf("%lld%lld", &a, &b);
+		printf("%lld\n", p(a,b));
+	} 
+}
