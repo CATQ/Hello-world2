@@ -1,33 +1,19 @@
 #include<stdio.h>
-long a[100010];
-int qs(long l, long r){
-	long x, y, temp, mid;
-	x = l; y = r; 
-	while (x < y){
-		mid = (x+y)/2;
-		while (a[x] <= a[mid]) x++;
-		while (a[y] >= a[mid]) y--;
-		if (y>=x){
-			temp = a[x];
-			a[x] = a[y];
-			a[y] = temp; 
-		}
-		x++;y--;
-	}
-	if (x<r) qs(x,r);
-	if (y>l) qs(l,y);
+#include<stdlib.h>
+int cmp(const void *a, const void *b){
+	return *(int *)b-*(int *)a;
 }
+long a[100010];
 int main(){
 	long temp, max, n, i, j, k, m;
 	scanf("%ld", &n);
 	for (i=1; i<=n; i++){
 		scanf("%ld%ld", &m, &k);
-		for (j=1; j<=m; j++) scanf("%ld", &a[j]);
-		qs(1,m); 
-		temp = 1; max = a[1];
-
-		j = 1;
-		while (j <= m){
+		for (j=0; j<=m-1; j++) scanf("%ld", &a[j]);
+		qsort(a, m, sizeof(a[0]), cmp); 
+		temp = 1; max = a[0];
+		j = 0;
+		while (j <= m-1){
 			if(a[j]<max) {
 					max = a[j];
 					temp = temp + 1;
@@ -40,5 +26,4 @@ int main(){
 		}
 		if (temp < k ) printf("error\n"); 
 	}
-	
 }
